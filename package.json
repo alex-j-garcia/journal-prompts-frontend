@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "dev:mobile": "npm run dev -- --host 0.0.0.0",
+    "dev:mobile": "NODE_ENV=mobile npm run dev -- --host 0.0.0.0",
     "lint": "eslint .",
     "preview": "vite preview",
     "server": "json-server -p3001 --watch db.json"
