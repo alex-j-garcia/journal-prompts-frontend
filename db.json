@@ -1,0 +1,24 @@
+{
+  "prompts": [
+    {
+      "id": 1,
+      "content": "What would your ideal life look like in 5 years? What would the worst version of your life look like in 5 years?",
+      "tag": "goals"
+    }, 
+    {
+      "id": 2,
+      "content": "Who are you most grateful for and why?",
+      "tag": "relationships"
+    }, 
+    {
+      "id": 3,
+      "content": "Is there a difficult conversation you're avoiding? If so, why?",
+      "tag": "relationships"
+    },
+    {
+      "id": 4,
+      "content": "What would you choose to do for work if money was not an obstacle?",
+      "tag": "personality"
+    }
+  ]
+}
