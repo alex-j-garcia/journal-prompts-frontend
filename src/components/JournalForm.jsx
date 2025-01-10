@@ -3,7 +3,7 @@ import FormTextarea from "./FormTextarea";
 const JournalForm = ({ data, handleChange, }) => {
   return (
     <div>
-      <form>
+      <form className='journalEntry-form'>
         {entries.map(({ label, name, }) => (
           <FormTextarea 
             key={name}

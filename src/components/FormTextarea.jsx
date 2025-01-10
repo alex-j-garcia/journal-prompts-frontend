@@ -10,7 +10,7 @@ const FormTextarea = ({
       <textarea 
         name={name}
         value={value}
-        className={`prompt`}
+        className='journalEntry-textarea'
         onChange={handleChange}
       />
     </label>

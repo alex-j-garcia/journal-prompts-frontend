@@ -47,7 +47,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /**********************
-* Tags
+* tag
 ***********************/
 .tag {
   background-color: lightgray;
@@ -57,9 +57,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /**********************
-* FormTextarea
+* .journalEntry-textarea
 ***********************/
-.prompt {
+.journalEntry-textarea {
   display: block;
   resize: none;
 }

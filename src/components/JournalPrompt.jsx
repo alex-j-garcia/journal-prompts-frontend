@@ -3,7 +3,11 @@ const JournalPrompt = ({ prompt }) => {
     return null;
   }
   
-  return <h2>[{prompt.content}]</h2>
+  return (
+    <div className="journalEntry-prompt">
+      <h2>[{prompt.content}]</h2>
+    </div>
+  );
 };
 
 export default JournalPrompt;
