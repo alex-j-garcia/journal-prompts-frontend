@@ -1,9 +1,13 @@
 import FormTextarea from "./FormTextarea";
 
-const JournalForm = ({ data, handleChange, }) => {
+const JournalForm = ({ 
+  data,
+  handleChange,
+  handleSubmit,
+}) => {
   return (
     <div>
-      <form className='journalEntry-form'>
+      <form onSubmit={handleSubmit} className='journalEntry-form'>
         {entries.map(({ label, name, }) => (
           <FormTextarea 
             key={name}
@@ -13,6 +17,7 @@ const JournalForm = ({ data, handleChange, }) => {
             handleChange={handleChange}
           />
         ))}
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
@@ -20,11 +25,11 @@ const JournalForm = ({ data, handleChange, }) => {
 
 const entries = [
   {
-    name: 'promptOne',
+    name: 'entryOne',
     label: 'Write a factual, unstructured response to the prompt',
   },
   {
-    name: 'promptTwo',
+    name: 'entryTwo',
     label: 'Reflect on the above in an effort to extract powerful insights',
   }
 ];

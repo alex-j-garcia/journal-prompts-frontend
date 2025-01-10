@@ -2,10 +2,10 @@ import axios from "axios";
 
 const baseUrl = process.env.NODE_ENV === 'mobile' ? 
   import.meta.env.VITE_BACKEND_URL :
-  'http://localhost:3001/prompts';
+  'http://localhost:3001';
 
 const getAll = async () => {
-  const promise = await axios.get(baseUrl);
+  const promise = await axios.get(`${baseUrl}/prompts`);
   return promise.data;
 }
 
@@ -21,7 +21,13 @@ const getTodaysPrompt = async () => {
   return todaysPrompt;
 }
 
+const addEntry = async (data) => {
+  const promise = await axios.post(`${baseUrl}/entries`, data)
+  return promise.data;
+};
+
 export default {
   getAll,
   getTodaysPrompt,
+  addEntry,
 };

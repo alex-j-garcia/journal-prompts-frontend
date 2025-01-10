@@ -6,8 +6,8 @@ import noteService from '../services/prompts';
 const JournalEntry = () => {
   const [todaysPrompt, setTodaysPrompt] = useState(null);
   const [formData, setFormData] = useState({
-    promptOne: '',
-    promptTwo: '',
+    entryOne: '',
+    entryTwo: '',
   });
 
   useEffect(() => {
@@ -24,10 +24,27 @@ const JournalEntry = () => {
     });
   };
 
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    noteService.addEntry({
+      ...formData,
+      prompt: todaysPrompt,
+    })
+
+    setFormData({
+      entryOne: '',
+      entryTwo: '',
+    });
+  };
+
   return (
     <div className='journalEntry'>
       <JournalPrompt prompt={todaysPrompt} />
-      <JournalForm data={formData} handleChange={onFormChange} />
+      <JournalForm 
+        data={formData}
+        handleChange={onFormChange}
+        handleSubmit={onFormSubmit}
+      />
     </div>
   );
 }
