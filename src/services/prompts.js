@@ -4,9 +4,24 @@ const baseUrl = process.env.NODE_ENV === 'mobile' ?
   import.meta.env.VITE_BACKEND_URL :
   'http://localhost:3001/prompts';
 
-const getAll = () => {
-  const promise = axios.get(baseUrl);
-  return promise.then((response) => response.data);
+const getAll = async () => {
+  const promise = await axios.get(baseUrl);
+  return promise.data;
 }
 
-export default getAll;
+const getTodaysPrompt = async () => {
+  const prompts = await getAll();
+  const promptsWithDates = prompts.map((prompt) => {
+    const date = new Date(prompt.date);
+    return { ...prompt, date };
+  });
+  const todaysPrompt = promptsWithDates.reduce((acc, curr) => (
+    curr.date > acc.date ? curr : acc
+  ));
+  return todaysPrompt;
+}
+
+export default {
+  getAll,
+  getTodaysPrompt,
+};
