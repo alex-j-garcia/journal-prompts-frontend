@@ -1,27 +1,43 @@
 import { useState, useEffect, } from 'react';
-import getAll from './services/prompts';
-import Badge from './components/Badge';
+import noteService from './services/prompts';
+import Header from './components/Header';
+import JournalForm from './components/JournalForm';
+import JournalPrompt from './components/JournalPrompt';
 import './App.css'
 
 function App() {
   const [prompts, setPrompts] = useState([]);
+  const [todaysPrompt, setTodaysPrompt] = useState(null);
+  const [formData, setFormData] = useState({
+    promptOne: '',
+    promptTwo: '',
+  });
 
   useEffect(() => {
-    getAll().then((prompts) => setPrompts(prompts));
+    noteService.getAll()
+      .then((prompts) => {
+        setPrompts(prompts)
+      });
+
+    noteService.getTodaysPrompt()
+      .then((prompt) => {
+        setTodaysPrompt(prompt)
+      });
   }, []);
 
-  return (
-    <>
-      <h1>Hello, World!</h1>
-      <ul>
-        {prompts.map((prompt) => (
-          <li key={prompt.id}>
-            {prompt.content} <Badge tag={prompt.tag} />
-          </li>
-        ))}
-      </ul>
-    </>
+  const onFormChange = ({ target }) => {
+    setFormData({ 
+      ...formData, 
+      [target.name]: target.value,
+    });
+  };
 
+  return (
+    <div className='app'>
+      <Header />
+      <JournalPrompt prompt={todaysPrompt} />
+      <JournalForm data={formData} handleChange={onFormChange} />
+    </div>
   );
 }
 
