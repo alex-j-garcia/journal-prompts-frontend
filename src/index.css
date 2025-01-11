@@ -47,7 +47,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /**********************
-* tag
+* .tag
 ***********************/
 .tag {
   background-color: lightgray;
@@ -62,4 +62,11 @@ h1, h2, h3, h4, h5, h6 {
 .journalEntry-textarea {
   display: block;
   resize: none;
+}
+
+/***********************
+* .notification
+************************/
+.notification {
+  background-color: lightgray;
 }
