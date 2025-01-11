@@ -3,7 +3,7 @@ import JournalForm from "./JournalForm";
 import JournalPrompt from "./JournalPrompt";
 import noteService from '../services/prompts';
 
-const JournalEntry = () => {
+const JournalEntry = ({ handleNotificationChange }) => {
   const [todaysPrompt, setTodaysPrompt] = useState(null);
   const [formData, setFormData] = useState({
     entryOne: '',
@@ -26,10 +26,23 @@ const JournalEntry = () => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    noteService.addEntry({
-      ...formData,
-      prompt: todaysPrompt,
-    })
+    
+    noteService
+      .addEntry({
+        ...formData,
+        prompt: todaysPrompt,
+      })
+      .then((response) => {
+        handleNotificationChange(`Successfully created ${response.id}`)
+      })
+      .catch((error) => {
+        handleNotificationChange(`There's been some error: ${error.name}`);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          handleNotificationChange(null)
+        }, 5000);
+      });
 
     setFormData({
       entryOne: '',
