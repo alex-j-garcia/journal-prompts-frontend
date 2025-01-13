@@ -1,8 +1,6 @@
 import axios from "axios";
 
-const baseUrl = process.env.NODE_ENV === 'mobile' ? 
-  import.meta.env.VITE_BACKEND_URL :
-  'http://localhost:3001';
+const baseUrl = 'http://localhost:3001';
 
 const getAll = async () => {
   const promise = await axios.get(`${baseUrl}/prompts`);
