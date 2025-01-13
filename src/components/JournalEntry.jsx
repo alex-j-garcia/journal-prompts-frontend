@@ -2,6 +2,7 @@ import { useState, useEffect, } from 'react';
 import JournalForm from "./JournalForm";
 import JournalPrompt from "./JournalPrompt";
 import noteService from '../services/prompts';
+import entryService from '../services/entries';
 
 const JournalEntry = ({ handleNotificationChange }) => {
   const [todaysPrompt, setTodaysPrompt] = useState(null);
@@ -27,7 +28,7 @@ const JournalEntry = ({ handleNotificationChange }) => {
   const onFormSubmit = (event) => {
     event.preventDefault();
     
-    noteService
+    entryService
       .addEntry({
         ...formData,
         prompt: todaysPrompt,
