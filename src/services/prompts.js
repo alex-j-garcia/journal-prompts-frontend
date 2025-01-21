@@ -1,14 +1,15 @@
 import axios from "axios";
+import endpoints from "./endpoints";
 
-const baseUrl = '/api/prompts';
+const api = axios.create({ baseURL: endpoints.baseUrl });
 
-const getAll = async () => {
-  const promise = await axios.get(baseUrl);
+const getAllPrompts = async () => {
+  const promise = await api.get(endpoints.allPrompts);
   return promise.data;
 }
 
 const getTodaysPrompt = async () => {
-  const prompts = await getAll();
+  const prompts = await getAllPrompts();
   const promptsWithDates = prompts.map((prompt) => {
     const date = new Date(prompt.date);
     return { ...prompt, date };
@@ -20,6 +21,6 @@ const getTodaysPrompt = async () => {
 }
 
 export default {
-  getAll,
+  getAllPrompts,
   getTodaysPrompt,
 };
