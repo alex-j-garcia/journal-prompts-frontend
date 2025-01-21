@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import Header from './components/Header';
 import JournalEntry from './components/JournalEntry';
 import Notification from './components/Notification';
+import Layout from './components/Layout';
 import './App.css'
 
 function App() {
@@ -13,9 +13,10 @@ function App() {
 
   return (
     <div className='app'>
-      <Header />
-      <Notification message={notification} />
-      <JournalEntry handleNotificationChange={onNotificationChange} />
+      <Layout>
+        <Notification message={notification} />
+        <JournalEntry handleNotificationChange={onNotificationChange} />
+      </Layout>
     </div>
   );
 }
