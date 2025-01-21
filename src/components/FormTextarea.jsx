@@ -12,7 +12,7 @@ const FormTextarea = ({
         value={value}
         className='journalEntry-textarea'
         onChange={handleChange}
-      />
+      ></textarea>
     </label>
   );
 };
