@@ -1,37 +1,26 @@
-import FormTextarea from "./FormTextarea";
+import useForm from "../hooks/useForm";
 
-const JournalForm = ({ 
-  data,
-  handleChange,
-  handleSubmit,
-}) => {
+const JournalForm = () => {
+  const {
+    value,
+    handleChange,
+    handleSubmit
+  } = useForm();
+
   return (
     <div>
       <form onSubmit={handleSubmit} className='journalEntry-form'>
-        {entries.map(({ label, name, }) => (
-          <FormTextarea 
-            key={name}
-            name={name}
-            label={label}
-            value={data[name]}
-            handleChange={handleChange}
-          />
-        ))}
+        <label>Write a factual, unstructured response to the prompt OR Reflect on the above in an effort to extract powerful insights:
+          <textarea 
+            name='entry'
+            value={value}
+            onChange={handleChange}
+          ></textarea>
+        </label>
         <button type="submit">Submit</button>
       </form>
     </div>
   );
 };
-
-const entries = [
-  {
-    name: 'entryOne',
-    label: 'Write a factual, unstructured response to the prompt',
-  },
-  {
-    name: 'entryTwo',
-    label: 'Reflect on the above in an effort to extract powerful insights',
-  }
-];
 
 export default JournalForm;
