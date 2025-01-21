@@ -6,16 +6,28 @@ import entryService from '../services/entries';
 
 const JournalEntry = ({ handleNotificationChange }) => {
   const [todaysPrompt, setTodaysPrompt] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [formData, setFormData] = useState({
     entryOne: '',
     entryTwo: '',
   });
 
+  const getTodaysPrompt = async () => {
+    setIsLoading(true);
+
+    try {
+      const response = await noteService.getTodaysPrompt();
+      setTodaysPrompt(response.data);
+    } catch (exception) {
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
-    noteService.getTodaysPrompt()
-      .then((prompt) => {
-        setTodaysPrompt(prompt)
-      });
+    getTodaysPrompt();
   }, []);
 
   const onFormChange = ({ target }) => {
