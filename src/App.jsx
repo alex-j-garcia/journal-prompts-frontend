@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import JournalEntry from './components/JournalEntry';
+import PromptPage from './components/PromptPage';
 import Notification from './components/Notification';
 import Layout from './components/Layout';
 import './App.css'
@@ -15,7 +15,7 @@ function App() {
     <div className='app'>
       <Layout>
         <Notification message={notification} />
-        <JournalEntry handleNotificationChange={onNotificationChange} />
+        <PromptPage />
       </Layout>
     </div>
   );

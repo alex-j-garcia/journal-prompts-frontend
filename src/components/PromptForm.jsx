@@ -1,11 +1,7 @@
 import useForm from "../hooks/useForm";
 
-const JournalForm = () => {
-  const {
-    value,
-    handleChange,
-    handleSubmit
-  } = useForm();
+const PromptForm = () => {
+  const { value, handleChange, handleSubmit } = useForm();
 
   return (
     <div>
@@ -23,4 +19,4 @@ const JournalForm = () => {
   );
 };
 
-export default JournalForm;
+export default PromptForm;
