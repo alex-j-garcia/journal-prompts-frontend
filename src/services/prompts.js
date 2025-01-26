@@ -8,19 +8,12 @@ const getAllPrompts = async () => {
   return promise.data;
 }
 
-const getTodaysPrompt = async () => {
-  const prompts = await getAllPrompts();
-  const promptsWithDates = prompts.map((prompt) => {
-    const date = new Date(prompt.date);
-    return { ...prompt, date };
-  });
-  const todaysPrompt = promptsWithDates.reduce((acc, curr) => (
-    curr.date > acc.date ? curr : acc
-  ));
-  return todaysPrompt;
+const getActivePrompt = async () => {
+  const activePrompt = await api.get(endpoints.todaysPrompt);
+  return activePrompt.data;
 }
 
 export default {
   getAllPrompts,
-  getTodaysPrompt,
+  getActivePrompt,
 };

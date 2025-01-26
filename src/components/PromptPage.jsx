@@ -8,9 +8,15 @@ const PromptPage = () => {
 
   return (
     <Layout>
-      <h2>{prompt.content}</h2>
-      <PromptForm />
-      <AnswersList answers={prompt.answers} />
+      {isLoading || !prompt
+        ? 'Loading...' 
+        : (
+          <>
+            <h2>{prompt.content}</h2>
+            <PromptForm />
+            <AnswersList answers={prompt.answers} />
+          </>
+        )}
     </Layout>
   );
 }

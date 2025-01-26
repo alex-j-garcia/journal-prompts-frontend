@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
-import prompts from '../services/prompts';
+import promptsService from '../services/prompts';
 
 const usePrompt = () => {
   const [prompt, setPrompt] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getActivePrompt = async () => {
     try {
       setIsLoading(true);
-      const response = await prompts.getTodaysPrompt();
-      setPrompt(response.data);
+      const data = await promptsService.getActivePrompt();
+      setPrompt(data);
     } catch (exception) {
       setIsError(true);
     } finally {
