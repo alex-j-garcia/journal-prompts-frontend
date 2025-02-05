@@ -1,11 +1,15 @@
 import { useState } from 'react';
+import useWordCount from './useWordCount';
 import answersService from '../services/answers';
 
 const useForm = () => {
   const [value, setValue] = useState('');
+  const { wordCount, handleWordCount } = useWordCount();
 
   const handleChange = (event) => {
-    setValue(event.target.value);
+    const value = event.target.value;
+    setValue(value);
+    handleWordCount(value);
   };
 
   const handleSubmit = async (event) => {
@@ -18,10 +22,12 @@ const useForm = () => {
     }
 
     setValue('');
+    handleWordCount('');
   };
 
   return {
     value,
+    wordCount,
     handleChange,
     handleSubmit,
   };

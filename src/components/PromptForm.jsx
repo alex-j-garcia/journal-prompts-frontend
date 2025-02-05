@@ -1,7 +1,13 @@
-import useForm from "../hooks/useForm";
+import useForm from '../hooks/useForm';
+import useWordCount from '../hooks/useWordCount';
 
 const PromptForm = () => {
-  const { value, handleChange, handleSubmit } = useForm();
+  const {
+    value,
+    wordCount,
+    handleChange,
+    handleSubmit,
+  } = useForm();
 
   return (
     <div>
@@ -13,6 +19,9 @@ const PromptForm = () => {
             onChange={handleChange}
           ></textarea>
         </label>
+        <div className='journalEntry-wordCount'>
+          {`${wordCount}/1500`}
+        </div>
         <button type="submit">Submit</button>
       </form>
     </div>
