@@ -1,5 +1,4 @@
 import useForm from '../hooks/useForm';
-import useWordCount from '../hooks/useWordCount';
 
 const PromptForm = () => {
   const {
@@ -13,15 +12,14 @@ const PromptForm = () => {
     <div>
       <form onSubmit={handleSubmit} className='journalEntry-form'>
         <label>Write a factual, unstructured response to the prompt OR Reflect on the above in an effort to extract powerful insights:
-          <textarea 
-            name='entry'
-            value={value}
-            onChange={handleChange}
-          ></textarea>
+          <textarea name='entry' value={value} onChange={handleChange}>
+          </textarea>
         </label>
+
         <div className='journalEntry-wordCount'>
           {`${wordCount}/1500`}
         </div>
+
         <button type="submit">Submit</button>
       </form>
     </div>
