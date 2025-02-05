@@ -3,8 +3,8 @@ import endpoints from './endpoints';
 
 const api = axios.create({ baseURL: endpoints.baseUrl });
 
-const addAnswer = async (answer) => {
-  const promise = await api.post(endpoints.answers, { answer });
+const addAnswer = async (payload) => {
+  const promise = await api.post(endpoints.answers, payload);
   return promise.data;
 };
 

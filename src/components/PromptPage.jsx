@@ -6,6 +6,7 @@ import AnswersList from "./AnswersList";
 const PromptPage = () => {
   const { prompt, isLoading, isError } = usePrompt();
 
+
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -16,7 +17,7 @@ const PromptPage = () => {
         ? <AnswersList answers={prompt.answers} /> 
         : (
           <>
-            <h2>{prompt.content}</h2>
+            <h2>{prompt.content ? prompt.content : ''}</h2>
             <PromptForm />
           </>
         )

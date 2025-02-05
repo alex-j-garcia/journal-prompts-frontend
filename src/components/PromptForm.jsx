@@ -2,7 +2,7 @@ import useForm from '../hooks/useForm';
 
 const PromptForm = () => {
   const {
-    value,
+    answer,
     wordCount,
     handleChange,
     handleSubmit,
@@ -12,7 +12,7 @@ const PromptForm = () => {
     <div>
       <form onSubmit={handleSubmit} className='journalEntry-form'>
         <label>Write a factual, unstructured response to the prompt OR Reflect on the above in an effort to extract powerful insights:
-          <textarea name='entry' value={value} onChange={handleChange}>
+          <textarea name='entry' value={answer} onChange={handleChange}>
           </textarea>
         </label>
 
