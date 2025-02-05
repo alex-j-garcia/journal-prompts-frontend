@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import promptsService from '../services/prompts';
 
 const usePrompt = () => {
-  const [prompt, setPrompt] = useState(null);
+  const [prompt, setPrompt] = useState({});
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
