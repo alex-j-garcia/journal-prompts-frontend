@@ -3,7 +3,7 @@ import useWordCount from './useWordCount';
 import useLocalStorage from './useLocalStorage';
 import answersService from '../services/answers';
 
-const useForm = () => {
+const useForm = (prompt) => {
   const [answer, setAnswer] = useState('');
   const { wordCount, handleWordCount } = useWordCount();
   const { user } = useLocalStorage();
@@ -18,11 +18,17 @@ const useForm = () => {
     event.preventDefault();
 
     try {
-      const promise = await answersService.addAnswer({ answer, user });
+      const promise = await answersService.addAnswer({
+        answer,
+        user,
+        promptId: prompt.id,
+      });
+
       window.localStorage.setItem(
         'journal-prompts-app',
         JSON.stringify(promise.user)
       );
+      
       setAnswer('');
       handleWordCount('');
     } catch (error) {

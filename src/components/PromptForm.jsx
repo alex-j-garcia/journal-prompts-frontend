@@ -1,12 +1,12 @@
 import useForm from '../hooks/useForm';
 
-const PromptForm = () => {
+const PromptForm = ({ prompt }) => {
   const {
     answer,
     wordCount,
     handleChange,
     handleSubmit,
-  } = useForm();
+  } = useForm(prompt);
 
   return (
     <div>

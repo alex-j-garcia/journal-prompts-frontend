@@ -18,7 +18,7 @@ const PromptPage = () => {
         : (
           <>
             <h2>{prompt.content ? prompt.content : ''}</h2>
-            <PromptForm />
+            <PromptForm prompt={prompt} />
           </>
         )
       }
