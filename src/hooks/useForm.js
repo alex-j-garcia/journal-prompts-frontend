@@ -2,7 +2,7 @@ import { useState } from 'react';
 import useWordCount from './useWordCount';
 import answersService from '../services/answers';
 
-const useForm = (prompt, setPrompt, user, setUser) => {
+const useForm = (prompt, triggerRefetch, user, setUser) => {
   const [answer, setAnswer] = useState('');
   const { wordCount, handleWordCount } = useWordCount();
 
@@ -23,9 +23,9 @@ const useForm = (prompt, setPrompt, user, setUser) => {
       });
 
       setUser(promise.user);
-      setPrompt({ ...prompt, answers: prompt.answers.concat(promise)});
       setAnswer('');
       handleWordCount('');
+      triggerRefetch();
     } catch (error) {
       console.log(`Error submitting answer: ${error}`)
     }
