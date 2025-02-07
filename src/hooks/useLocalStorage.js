@@ -1,16 +1,22 @@
+import { useState, useEffect, } from 'react';
 
-import { useState, } from 'react';
+const storageKey = 'journal-prompts-app';
 
 const useLocalStorage = () => {
-  const [user] = useState(
+  const [user, setUser] = useState(
     JSON.parse(
-      window.localStorage.getItem('journal-prompts-app')
+      window.localStorage.getItem(storageKey)
     )
   );
 
-  return {
+  useEffect(() => {
+    window.localStorage.setItem(storageKey, JSON.stringify(user));
+  }, [user]);
+
+  return [
     user,
-  };
+    setUser,
+  ];
 };
 
 export default useLocalStorage;

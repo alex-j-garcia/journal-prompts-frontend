@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import useWordCount from './useWordCount';
-import useLocalStorage from './useLocalStorage';
 import answersService from '../services/answers';
 
-const useForm = (prompt) => {
+const useForm = (prompt, user, setUser) => {
   const [answer, setAnswer] = useState('');
   const { wordCount, handleWordCount } = useWordCount();
-  const { user } = useLocalStorage();
 
   const handleChange = (event) => {
     const answer = event.target.value;
@@ -24,11 +22,7 @@ const useForm = (prompt) => {
         promptId: prompt.id,
       });
 
-      window.localStorage.setItem(
-        'journal-prompts-app',
-        JSON.stringify(promise.user)
-      );
-      
+      setUser(promise.user);
       setAnswer('');
       handleWordCount('');
     } catch (error) {

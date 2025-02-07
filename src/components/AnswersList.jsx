@@ -7,7 +7,7 @@ const AnswersList = ({ answers }) => {
     <div className="answersList">
       <ul>
         {answers.map((answer) => (
-          <li key={answer.user}>
+          <li key={answer.id}>
             {answer.answer}
           </li>
         ))}

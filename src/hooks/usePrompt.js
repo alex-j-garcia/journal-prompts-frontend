@@ -6,7 +6,7 @@ const usePrompt = () => {
   const [prompt, setPrompt] = useState({});
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { user } = useLocalStorage();
+  const [user, setUSer] = useLocalStorage();
 
   const getActivePrompt = async () => {
     try {
@@ -29,6 +29,7 @@ const usePrompt = () => {
     prompt,
     isError,
     isLoading,
+    setUSer,
   };
 };
 
