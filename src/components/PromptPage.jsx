@@ -20,11 +20,11 @@ const PromptPage = () => {
 
   return (
     <Layout>
+      <h2>{prompt.content ? prompt.content : ''}</h2>
       {prompt.answers && prompt.answers.length
         ? <AnswersList answers={prompt.answers} /> 
         : (
           <>
-            <h2>{prompt.content ? prompt.content : ''}</h2>
             <PromptForm
               prompt={prompt}
               setPrompt={setPrompt}
