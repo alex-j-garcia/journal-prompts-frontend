@@ -6,6 +6,7 @@ import AnswersList from "./AnswersList";
 const PromptPage = () => {
   const {
     prompt,
+    setPrompt,
     isLoading,
     isError,
     user,
@@ -24,7 +25,12 @@ const PromptPage = () => {
         : (
           <>
             <h2>{prompt.content ? prompt.content : ''}</h2>
-            <PromptForm prompt={prompt} user={user} setUser={setUSer} />
+            <PromptForm
+              prompt={prompt}
+              setPrompt={setPrompt}
+              user={user}
+              setUser={setUSer}
+            />
           </>
         )
       }

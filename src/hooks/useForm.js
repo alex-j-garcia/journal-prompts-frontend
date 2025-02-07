@@ -2,7 +2,7 @@ import { useState } from 'react';
 import useWordCount from './useWordCount';
 import answersService from '../services/answers';
 
-const useForm = (prompt, user, setUser) => {
+const useForm = (prompt, setPrompt, user, setUser) => {
   const [answer, setAnswer] = useState('');
   const { wordCount, handleWordCount } = useWordCount();
 
@@ -23,6 +23,7 @@ const useForm = (prompt, user, setUser) => {
       });
 
       setUser(promise.user);
+      setPrompt({ ...prompt, answers: prompt.answers.concat(promise)});
       setAnswer('');
       handleWordCount('');
     } catch (error) {

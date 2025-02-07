@@ -8,10 +8,15 @@ const usePrompt = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUSer] = useLocalStorage();
 
+  const fetchPrompt = async () => {
+    const prompt = await promptsService.getActivePrompt(user);
+    return prompt;
+  };
+
   const getActivePrompt = async () => {
     try {
       setIsLoading(true);
-      const data = await promptsService.getActivePrompt(user);
+      const data = await fetchPrompt(); 
       setPrompt(data);
     } catch (exception) {
       setIsError(true);
@@ -20,13 +25,29 @@ const usePrompt = () => {
     }
   };
 
+  const getActivePromptWithAnswers = async () => {
+    try {
+      const data = await fetchPrompt();
+      setPrompt(data);
+    } catch (error) {
+      console.log(`Error refetching prompt: ${error}`);
+    }
+  };
+
   useEffect(() => {
-    getActivePrompt();
-  }, []);
+    if (!Object.hasOwn(prompt, 'content')) {
+      getActivePrompt();
+    }
+
+    if (Object.hasOwn(prompt, 'answers') && prompt.answers.length === 1) {
+      getActivePromptWithAnswers()
+    }
+  }, [prompt]);
 
 
   return { 
     prompt,
+    setPrompt,
     isError,
     isLoading,
     setUSer,
