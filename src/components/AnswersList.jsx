@@ -6,11 +6,11 @@ const AnswersList = ({ answers }) => {
   return (
     <div className="answersList">
       <ul>
-        {answers.map((answer) => {
-          <li key={answer.author.name}>
-            {answer}
+        {answers.map((answer) => (
+          <li key={answer.id}>
+            {answer.answer}
           </li>
-        })}
+        ))}
       </ul>
     </div>
   );
