@@ -4,11 +4,14 @@ const AnswersList = ({ answers }) => {
   }
   
   return (
-    <div className="answersList">
+    <div className='answersList'>
       <ul>
         {answers.map((answer) => (
           <li key={answer.id}>
             {answer.answer}
+            <span className='answersList-author'>
+              {answer.user.username}
+            </span>
           </li>
         ))}
       </ul>
