@@ -1,4 +1,4 @@
-import useForm from '../hooks/useForm';
+import usePromptForm from '../hooks/usePromptForm';
 
 const PromptForm = ({ prompt, triggerRefetch, user, setUser }) => {
   const {
@@ -6,7 +6,7 @@ const PromptForm = ({ prompt, triggerRefetch, user, setUser }) => {
     wordCount,
     handleChange,
     handleSubmit,
-  } = useForm(prompt, triggerRefetch, user, setUser);
+  } = usePromptForm(prompt, triggerRefetch, user, setUser);
 
   return (
     <div>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import useWordCount from './useWordCount';
 import answersService from '../services/answers';
 
-const useForm = (prompt, triggerRefetch, user, setUser) => {
+const usePromptForm = (prompt, triggerRefetch, user, setUser) => {
   const [answer, setAnswer] = useState('');
   const { wordCount, handleWordCount } = useWordCount();
 
@@ -39,4 +39,4 @@ const useForm = (prompt, triggerRefetch, user, setUser) => {
   };
 };
 
-export default useForm;
+export default usePromptForm;

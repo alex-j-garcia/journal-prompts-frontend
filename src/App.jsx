@@ -1,5 +1,10 @@
 import { useState } from 'react';
+import {
+  Route,
+  Routes,
+} from 'react-router-dom';
 import PromptPage from './components/PromptPage';
+import LoginPage from './components/LoginPage';
 import './App.css'
 
 function App() {
@@ -11,7 +16,10 @@ function App() {
 
   return (
     <div className='app'>
-        <PromptPage />
+      <Routes>
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/' element={<PromptPage />} />
+      </Routes>
     </div>
   );
 }

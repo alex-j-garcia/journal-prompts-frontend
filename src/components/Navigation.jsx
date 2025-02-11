@@ -1,10 +1,14 @@
+import {
+  Link,
+} from 'react-router-dom';
+
 const Navigation = () => {
   return (
     <nav>
       <ul>
         {links.map((link) => (
           <li key={link.text}>
-            <a href={link.href}>{link.text}</a>
+            <Link to={link.href}>{link.text}</Link>
           </li>
         ))}
       </ul>
@@ -16,6 +20,10 @@ const links = [
   {
     href: '/',
     text: 'home',
+  },
+  {
+    href: '/login',
+    text: 'login',
   },
 ];
 
