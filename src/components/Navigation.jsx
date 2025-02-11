@@ -2,11 +2,17 @@ import {
   Link,
 } from 'react-router-dom';
 
-const Navigation = () => {
+const Navigation = ({ userToken }) => {
+  const loggedInLinks = links.filter((link) => (
+    userToken && link.text === 'login'
+      ? null
+      : link
+  ));
+
   return (
     <nav>
       <ul>
-        {links.map((link) => (
+        {loggedInLinks.map((link) => (
           <li key={link.text}>
             <Link to={link.href}>{link.text}</Link>
           </li>
@@ -26,6 +32,5 @@ const links = [
     text: 'login',
   },
 ];
-
 
 export default Navigation;

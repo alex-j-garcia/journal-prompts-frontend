@@ -3,7 +3,7 @@ import Layout from './Layout';
 import PromptForm from "./PromptForm";
 import AnswersList from "./AnswersList";
 
-const PromptPage = () => {
+const PromptPage = ({ userToken }) => {
   const {
     prompt,
     triggerRefetch,
@@ -19,7 +19,7 @@ const PromptPage = () => {
   }
 
   return (
-    <Layout>
+    <Layout userToken={userToken} >
       <h2>{prompt.content ? prompt.content : ''}</h2>
       {prompt.answers && prompt.answers.length
         ? <AnswersList answers={prompt.answers} /> 
