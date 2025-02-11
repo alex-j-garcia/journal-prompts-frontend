@@ -1,11 +1,11 @@
 import Layout from "./Layout";
 import LoginForm from "./LoginForm";
 
-const LoginPage = () => {
+const LoginPage = ({ handleLogin }) => {
   return (
     <Layout>
       <h2>Login</h2>
-      <LoginForm />
+      <LoginForm handleLogin={handleLogin} />
     </Layout>
   );
 };

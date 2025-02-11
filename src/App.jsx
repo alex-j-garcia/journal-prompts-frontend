@@ -8,17 +8,17 @@ import LoginPage from './components/LoginPage';
 import './App.css'
 
 function App() {
-  const [notification, setNotification] = useState(null);
+  const [userToken, setUserToken] = useState(null);
 
-  const onNotificationChange = (message) => {
-    setNotification(message);
+  const onLogin = (token) => {
+    setUserToken(token);
   };
 
   return (
     <div className='app'>
       <Routes>
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/' element={<PromptPage />} />
+        <Route path='/login' element={<LoginPage handleLogin={onLogin} />} />
+        <Route path='/' element={<PromptPage userToken={userToken} />} />
       </Routes>
     </div>
   );

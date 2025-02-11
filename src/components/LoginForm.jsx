@@ -1,11 +1,11 @@
 import useLoginForm from "../hooks/useLoginForm";
 
-const LoginForm = () => {
+const LoginForm = ({ handleLogin }) => {
   const {
     formHint,
     formState,
     handleEvent,
-  } = useLoginForm();
+  } = useLoginForm(handleLogin);
 
   return (
     <form onSubmit={handleEvent}>

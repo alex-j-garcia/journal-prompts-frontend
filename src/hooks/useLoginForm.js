@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import loginService from '../services/login';
 
-const useLoginForm = () => {
+const useLoginForm = (handleLogin) => {
   const [formHint, setFormHint] = useState('');
   const [formState, setFormState] = useState({
     username: '',
@@ -23,7 +23,7 @@ const useLoginForm = () => {
       if (data.error) {
         setFormHint(data.error);
       } else {
-        console.log(`User logged in: ${data.token}`);
+        handleLogin(data.token);
         navigate('/');
       }
     } else if (type === 'change') {

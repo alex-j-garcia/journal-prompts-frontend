@@ -1,11 +1,11 @@
 import Navigation from "./Navigation";
 
-const Layout = ({ children }) => {
+const Layout = ({ userToken, children, }) => {
   return (
     <div>
       <header>
         <h1>📖 Journal Prompts</h1>
-        <Navigation />
+        <Navigation userToken={userToken} />
       </header>
       <main>
         {children}
