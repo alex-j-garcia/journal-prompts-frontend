@@ -9,8 +9,6 @@ const usePrompt = () => {
   const [user, setUSer] = useLocalStorage();
   const [isRefetch, setIsRefetch] = useState(false);
 
-  const [count, setCount] = useState(1);
-
   const fetchPrompt = async () => {
     const prompt = await promptsService.getActivePrompt(user);
     return prompt;
@@ -39,8 +37,6 @@ const usePrompt = () => {
   };
 
   useEffect(() => {
-    setCount(count + 1);
-
     if (!isRefetch && !Object.hasOwn(prompt, 'content')) {
       getActivePrompt();
     }
