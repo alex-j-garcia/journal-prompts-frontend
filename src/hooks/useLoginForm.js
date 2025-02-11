@@ -17,7 +17,6 @@ const useLoginForm = (handleLogin) => {
     const { type, target } = event;
     
     if (type === 'submit') {
-      // TO-DO: store token in state
       const data = await loginService.login(formState);
       
       if (data.error) {
