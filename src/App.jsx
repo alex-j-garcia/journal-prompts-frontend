@@ -10,8 +10,14 @@ function App() {
   return (
     <div className='app'>
       <Routes>
-        <Route path='/login' element={<LoginPage handleLogin={setUser} />} />
-        <Route path='/' element={<PromptPage userToken={user} />} />
+        <Route
+          path='/login'
+          element={<LoginPage handleLogin={setUser} />}
+        />
+        <Route
+          path='/'
+          element={<PromptPage user={user} setUser={setUser} />}
+        />
       </Routes>
     </div>
   );

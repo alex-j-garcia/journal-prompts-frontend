@@ -4,12 +4,18 @@ import endpoints from "./endpoints";
 const api = axios.create({ baseURL: endpoints.baseUrl });
 
 const getActivePrompt = async (user) => {
-  const userID = user === null ? user : user.id;
+  const customHeader = {};
+  
+  if (user && user.id) {
+    customHeader.user = user.id;
+  } else if (user && user.token) {
+    customHeader.authorization = `Bearer ${user.token}`;
+  }
   
   const activePrompt = await api
     .get(
       endpoints.activePrompt,
-      { headers: { user: userID } },
+      { headers: customHeader },
     );
   return activePrompt.data;
 }

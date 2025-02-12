@@ -3,15 +3,13 @@ import Layout from './Layout';
 import PromptForm from "./PromptForm";
 import AnswersList from "./AnswersList";
 
-const PromptPage = ({ userToken }) => {
+const PromptPage = ({ user, setUser }) => {
   const {
     prompt,
     triggerRefetch,
     isLoading,
     isError,
-    user,
-    setUSer,
-  } = usePrompt();
+  } = usePrompt(user);
 
 
   if (isLoading) {
@@ -19,17 +17,17 @@ const PromptPage = ({ userToken }) => {
   }
 
   return (
-    <Layout user={userToken} >
+    <Layout user={user} >
       <h2>{prompt.content ? prompt.content : ''}</h2>
       {prompt.answers && prompt.answers.length
         ? <AnswersList answers={prompt.answers} /> 
         : (
           <>
             <PromptForm
-              prompt={prompt}
-              triggerRefetch={triggerRefetch}
               user={user}
-              setUser={setUSer}
+              prompt={prompt}
+              setUser={setUser}
+              triggerRefetch={triggerRefetch}
             />
           </>
         )

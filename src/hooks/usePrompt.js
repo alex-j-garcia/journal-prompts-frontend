@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
-import useLocalStorage from './useLocalStorage';
 import promptsService from '../services/prompts';
 
-const usePrompt = () => {
+const usePrompt = (user) => {
   const [prompt, setPrompt] = useState({});
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [user, setUSer] = useLocalStorage();
   const [isRefetch, setIsRefetch] = useState(false);
 
   const fetchPrompt = async () => {
@@ -59,8 +57,6 @@ const usePrompt = () => {
     triggerRefetch,
     isError,
     isLoading,
-    setUSer,
-    user,
   };
 };
 
