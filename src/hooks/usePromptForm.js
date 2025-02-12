@@ -14,7 +14,7 @@ const usePromptForm = (prompt, triggerRefetch, user, setUser) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    
     try {
       const promise = await answersService.addAnswer({
         answer,

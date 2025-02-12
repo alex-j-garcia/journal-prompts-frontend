@@ -10,8 +10,12 @@ const usePrompt = () => {
   const [isRefetch, setIsRefetch] = useState(false);
 
   const fetchPrompt = async () => {
-    const prompt = await promptsService.getActivePrompt(user);
-    return prompt;
+    try {
+      const prompt = await promptsService.getActivePrompt(user);
+      return prompt;
+    } catch (error) {
+      console.log(`Error fetching prompt: ${error}`);
+    }
   };
 
   const getActivePrompt = async () => {
@@ -56,6 +60,7 @@ const usePrompt = () => {
     isError,
     isLoading,
     setUSer,
+    user,
   };
 };
 
