@@ -19,7 +19,7 @@ const PromptPage = ({ userToken }) => {
   }
 
   return (
-    <Layout userToken={userToken} >
+    <Layout user={userToken} >
       <h2>{prompt.content ? prompt.content : ''}</h2>
       {prompt.answers && prompt.answers.length
         ? <AnswersList answers={prompt.answers} /> 

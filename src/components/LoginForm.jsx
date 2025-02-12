@@ -13,19 +13,19 @@ const LoginForm = ({ handleLogin }) => {
       <div>
         <label htmlFor='username'>username:</label>
         <input
-          type='text'
           id='username'
-          value={formState.username}
+          type='text'
           onChange={handleEvent}
+          value={formState.username}
         />
       </div>
       <div>
         <label htmlFor='password'>password:</label>
         <input
-          type='password'
           id='password'
-          value={formState.password}
+          type='password'
           onChange={handleEvent}
+          value={formState.password}
         />
       </div>
       <button type='submit'>Login</button>

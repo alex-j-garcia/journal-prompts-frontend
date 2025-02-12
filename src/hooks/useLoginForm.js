@@ -22,7 +22,7 @@ const useLoginForm = (handleLogin) => {
       if (data.error) {
         setFormHint(data.error);
       } else {
-        handleLogin(data.token);
+        handleLogin(data);
         navigate('/');
       }
     } else if (type === 'change') {

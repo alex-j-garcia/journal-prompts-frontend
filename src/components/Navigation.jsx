@@ -2,9 +2,9 @@ import {
   Link,
 } from 'react-router-dom';
 
-const Navigation = ({ userToken }) => {
+const Navigation = ({ user }) => {
   const loggedInLinks = links.filter((link) => (
-    userToken && link.text === 'login'
+    user && link.text === 'login'
       ? null
       : link
   ));
