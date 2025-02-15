@@ -7,10 +7,10 @@ const useWordCount = () => {
     setWordCount(text.length);
   };
 
-  return {
+  return [
     wordCount,
     handleWordCount,
-  };
+  ];
 };
 
 export default useWordCount;

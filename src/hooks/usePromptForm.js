@@ -2,29 +2,29 @@ import { useState } from 'react';
 import useWordCount from './useWordCount';
 import answersService from '../services/answers';
 
-const usePromptForm = (prompt, triggerRefetch, user, setUser) => {
+const usePromptForm = (user, prompt, handleAnon, triggerRefetch,) => {
   const [answer, setAnswer] = useState('');
-  const { wordCount, handleWordCount } = useWordCount();
+  const [ wordCount, setWordCount ] = useWordCount();
 
   const handleChange = (event) => {
     const answer = event.target.value;
     setAnswer(answer);
-    handleWordCount(answer);
+    setWordCount(answer);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     
     try {
-      const promise = await answersService.addAnswer({
+      const { id, answer: answerText, promptId, } = await answersService.addAnswer({
         answer,
         user,
         promptId: prompt.id,
       });
 
-      setUser(promise.user);
       setAnswer('');
-      handleWordCount('');
+      setWordCount('');
+      handleAnon(id, answerText, promptId);
       triggerRefetch();
     } catch (error) {
       console.log(`Error submitting answer: ${error}`)

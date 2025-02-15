@@ -1,17 +1,22 @@
 import usePromptForm from '../hooks/usePromptForm';
 
-const PromptForm = ({ prompt, triggerRefetch, user, setUser }) => {
+const PromptForm = ({
+  user,
+  prompt,
+  handleAnon,
+  triggerRefetch,
+}) => {
   const {
     answer,
     wordCount,
     handleChange,
     handleSubmit,
-  } = usePromptForm(prompt, triggerRefetch, user, setUser);
+  } = usePromptForm(user, prompt, handleAnon, triggerRefetch);
 
   return (
     <div>
       <form onSubmit={handleSubmit} className='journalEntry-form'>
-        <label>Write a factual, unstructured response to the prompt OR Reflect on the above in an effort to extract powerful insights:
+        <label>Write a response to the prompt, then reflect on the answer to extract powerful insights:
           <textarea name='entry' value={answer} onChange={handleChange}>
           </textarea>
         </label>

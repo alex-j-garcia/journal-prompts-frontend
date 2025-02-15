@@ -1,5 +1,6 @@
 import { Route, Routes, } from 'react-router-dom';
 import useUser from './hooks/useUser';
+import useLocalStorage from './hooks/useLocalStorage';
 import PromptPage from './components/PromptPage';
 import LoginPage from './components/LoginPage';
 import GlobalFeedPage from './components/GlobalFeedPage';
@@ -7,6 +8,7 @@ import './App.css'
 
 function App() {
   const [user, setUser] = useUser();
+  const [localStorage, setLocalStorage] = useLocalStorage(user);
 
   return (
     <div className='app'>
@@ -21,7 +23,7 @@ function App() {
         />
         <Route
           path='/'
-          element={<PromptPage user={user} setUser={setUser} />}
+          element={<PromptPage user={user} handleAnon={setLocalStorage} />}
         />
       </Routes>
     </div>

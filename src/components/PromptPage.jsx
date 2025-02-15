@@ -3,7 +3,7 @@ import Layout from './Layout';
 import PromptForm from "./PromptForm";
 import AnswersList from "./AnswersList";
 
-const PromptPage = ({ user, setUser }) => {
+const PromptPage = ({ user, handleAnon, }) => {
   const {
     prompt,
     triggerRefetch,
@@ -26,7 +26,7 @@ const PromptPage = ({ user, setUser }) => {
             <PromptForm
               user={user}
               prompt={prompt}
-              setUser={setUser}
+              handleAnon={handleAnon}
               triggerRefetch={triggerRefetch}
             />
           </>

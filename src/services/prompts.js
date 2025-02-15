@@ -5,10 +5,8 @@ const api = axios.create({ baseURL: endpoints.baseUrl });
 
 const getActivePrompt = async (user) => {
   const customHeader = {};
-  
-  if (user && user.id) {
-    customHeader.user = user.id;
-  } else if (user && user.token) {
+
+  if (user && user.token) {
     customHeader.authorization = `Bearer ${user.token}`;
   }
   
