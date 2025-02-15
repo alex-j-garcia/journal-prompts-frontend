@@ -3,11 +3,15 @@ import {
 } from 'react-router-dom';
 
 const Navigation = ({ user }) => {
-  const loggedInLinks = links.filter((link) => (
-    user && link.text === 'login'
-      ? null
-      : link
-  ));
+  const loggedInLinks = links.filter((link) => {
+    if (!user && link.text === 'global feed') {
+      return null;
+    } else if (user && link.text === 'login') {
+      return null;
+    } else {
+      return link;
+    }
+  });
 
   return (
     <nav>
@@ -30,6 +34,10 @@ const links = [
   {
     href: '/login',
     text: 'login',
+  },
+  {
+    href: '/global-feed',
+    text: 'global feed',
   },
 ];
 
