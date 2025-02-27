@@ -15,6 +15,7 @@ const AnswersList = ({ answers }) => {
           </li>
         ))}
       </ul>
+      <p>Come back tomorrow for a new prompt!</p>
     </div>
   );
 };

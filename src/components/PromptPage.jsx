@@ -3,14 +3,13 @@ import Layout from './Layout';
 import PromptForm from "./PromptForm";
 import AnswersList from "./AnswersList";
 
-const PromptPage = ({ user, handleAnon, }) => {
+const PromptPage = ({ user, }) => {
   const {
     prompt,
-    triggerRefetch,
     isLoading,
     isError,
+    triggerRefetch,
   } = usePrompt(user);
-
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -26,7 +25,6 @@ const PromptPage = ({ user, handleAnon, }) => {
             <PromptForm
               user={user}
               prompt={prompt}
-              handleAnon={handleAnon}
               triggerRefetch={triggerRefetch}
             />
           </>
