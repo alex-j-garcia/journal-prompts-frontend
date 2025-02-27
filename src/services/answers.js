@@ -25,12 +25,12 @@ const addAnswer = async (payload) => {
   }
 };
 
-const getAnswer = async () => {
-  const promise = await api.get(endpoints.answers);
+const getPromptAnswers = async (promptId) => {
+  const promise = await api.get(`${endpoints.answers}?promptId=${promptId}`);
   return promise.data;
 };
 
 export default {
   addAnswer,
-  getAnswer,
+  getPromptAnswers,
 }

@@ -3,7 +3,6 @@ import usePromptForm from '../hooks/usePromptForm';
 const PromptForm = ({
   user,
   prompt,
-  handleAnon,
   triggerRefetch,
 }) => {
   const {
@@ -11,7 +10,7 @@ const PromptForm = ({
     wordCount,
     handleChange,
     handleSubmit,
-  } = usePromptForm(user, prompt, handleAnon, triggerRefetch);
+  } = usePromptForm(user, prompt, triggerRefetch);
 
   return (
     <div>
