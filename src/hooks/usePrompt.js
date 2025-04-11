@@ -27,12 +27,22 @@ const usePrompt = (user) => {
       
       // Unregistered users who've answered prompt are shown modified prompt
       if (!user && Object.hasOwn(localEntries, prompt.id)) {
-        setPrompt({
+        const freshAnswers = await answersService.getPromptAnswers(prompt.id);
+        const currentPromptUpdate = {
           ...prompt,
-          answers: localEntries[prompt.id].answers,
+          answers: freshAnswers
+        };
+        
+        setPrompt({ ...currentPromptUpdate });
+
+
+        setLocalEntries({
+          ...localEntries,
+          [prompt.id]: currentPromptUpdate,
         });
       } else {
-        // All users that haven't answered are shown prompt as-is
+        // All users that haven't answered are shown prompt as-is.
+        // If a registered user's answered, payload includes answers
         setPrompt(prompt);
       }
     } catch (exception) {
@@ -51,7 +61,7 @@ const usePrompt = (user) => {
         const data = await fetchPrompt();
         setPrompt(data);
       } else {
-        const currentPromptAnswers = await answersService.getPromptAnswers(prompt.id)
+        const currentPromptAnswers = await answersService.getPromptAnswers(prompt.id);
         const newData = { ...prompt, answers: currentPromptAnswers };
         setLocalEntries({
           ...localEntries,
