@@ -21,7 +21,9 @@ const PromptForm = ({
         </label>
 
         <div className='journalEntry-wordCount'>
-          {`${wordCount}/1500`}
+          <span className={wordCount > 150 ? 'journalEntry-wordCount--isError' : ''}>
+            {`${wordCount}/150`}
+          </span>
         </div>
 
         <button type="submit">Submit</button>
