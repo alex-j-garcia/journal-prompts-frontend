@@ -1,40 +1,56 @@
 import { test, expect } from 'vitest';
-import getWordCount from './getWordCount';
+import getWordCountFromText from './getWordCount';
 
 test('it should return correct count for text with no punctuation', () => {
-  expect(getWordCount('One two three')).toBe(3);
+  expect(getWordCountFromText('One two three')).toBe(3);
 
   expect(
-    getWordCount('Earum solvo voveo veritatis depopulo ullus nesciunt ultio urbanus')
+    getWordCountFromText('Earum solvo voveo veritatis depopulo ullus nesciunt ultio urbanus')
   ).toBe(9);
 
-  expect(getWordCount('')).toBe(0);
+  expect(getWordCountFromText('')).toBe(0);
 });
 
 test('it should return correct count for standard punctuation', () => {
   expect(
-    getWordCount(`This is some pretty standard, common punction. Don't you think?`)
+    getWordCountFromText(`This is some pretty standard, common punction. Don't you think?`)
   ).toBe(10);
 
-  expect(getWordCount('Hyphenated words should count as-one')).toBe(5);
+  expect(getWordCountFromText('Hyphenated words should count as-one')).toBe(5);
 });
 
 test('it should return correct count for standard symbols', () => {
-  expect(getWordCount(`Hi I'm the #1 tester in the world`)).toBe(8);
+  expect(getWordCountFromText(`Hi I'm the #1 tester in the world`)).toBe(8);
 
-  expect(getWordCount('This & that')).toBe(3);
+  expect(getWordCountFromText('This & that')).toBe(3);
 
-  expect(getWordCount('I have a $5.00 bill')).toBe(5);
+  expect(getWordCountFromText('I have a $5.00 bill')).toBe(5);
 });
 
 test('it should return correct count for text with nonstandard punctuation', () => {
   expect(
-    getWordCount('This is less standard . In fact , it is quite  weird .Yes?')
+    getWordCountFromText('This is less standard . In fact , it is quite  weird .Yes?')
   ).toBe(11);
 });
 
 test('it should properly handle ellipses', () => {
-  expect(getWordCount('Thinking...done')).toBe(2);
+  expect(getWordCountFromText('This is three...')).toBe(3);
 
-  expect(getWordCount(`I'm...thinking..really...hard....today`)).toBe(5);
+  expect(getWordCountFromText('Thinking...done')).toBe(2);
+
+  expect(getWordCountFromText(`I'm...thinking..really...hard....today`)).toBe(5);
+
+  expect(getWordCountFromText(`Hi there I'm...thinking..really...hard....today bye there`)).toBe(9);
+});
+
+test('it should properly handle currency', () => {
+  expect(getWordCountFromText('I have $5.00 to my name')).toBe(6);
+
+  expect(getWordCountFromText('$12.34')).toBe(1);
+
+  expect(getWordCountFromText(`$5.00's all I got`)).toBe(4);
+});
+
+test('it should properly handle whitespace', () => {
+  expect(getWordCountFromText('  I  am  five  words  long  ')).toBe(5);
 });

@@ -1,16 +1,16 @@
 import { useState } from 'react';
-import getWordCount from '../utils/getWordCount';
+import getWordCountFromText from '../utils/getWordCount';
 
 const useWordCount = () => {
   const [wordCount, setWordCount] = useState(0);
 
-  const handleWordCount = (text) => {
-    setWordCount(getWordCount(text));
+  const updateWordCount = (text) => {
+    setWordCount(getWordCountFromText(text));
   };
 
   return [
     wordCount,
-    handleWordCount,
+    updateWordCount,
   ];
 };
 
