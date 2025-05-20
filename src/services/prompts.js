@@ -1,23 +1,18 @@
-import axios from "axios";
-import endpoints from "./endpoints";
-
-const api = axios.create({ baseURL: endpoints.baseUrl });
+import api from './api';
+import createAuthHeaderFromUser from '../utils/createAuthHeaderFromUser';
+import endpoints from './endpoints';
 
 const getActivePrompt = async (user) => {
-  const customHeader = {};
-
-  if (user && user.token) {
-    customHeader.authorization = `Bearer ${user.token}`;
-  }
+  const authenticationHeader = createAuthHeaderFromUser(user);
   
-  const activePrompt = await api
-    .get(
-      endpoints.activePrompt,
-      { headers: customHeader },
-    );
-  return activePrompt.data;
+  try {
+    const { data: activePrompt } = await api.get(endpoints.activePrompt, authenticationHeader);
+    return activePrompt;
+  } catch (error) {
+    console.log(error.response.data);
+  }
 }
 
 export default {
-  getActivePrompt,
+  getActivePrompt
 };

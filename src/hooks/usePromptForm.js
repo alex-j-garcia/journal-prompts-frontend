@@ -6,17 +6,17 @@ const usePromptForm = (user, prompt, triggerRefetch) => {
   const [answer, setAnswer] = useState('');
   const [wordCount, setWordCount] = useWordCount();
 
-  const handleChange = (event) => {
-    const answer = event.target.value;
+  const updateAnswer = (changeEvent) => {
+    const answer = changeEvent.target.value;
     setAnswer(answer);
     setWordCount(answer);
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const submitAnswer = async (submitEvent) => {
+    submitEvent.preventDefault();
 
     try {
-      await answersService.addAnswer({
+      await answersService.addPromptAnswer({
         user,
         answer,
         promptId: prompt.id,
@@ -33,8 +33,8 @@ const usePromptForm = (user, prompt, triggerRefetch) => {
   return {
     answer,
     wordCount,
-    handleChange,
-    handleSubmit,
+    updateAnswer,
+    submitAnswer,
   };
 };
 

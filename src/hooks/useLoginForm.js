@@ -4,37 +4,36 @@ import loginService from '../services/login';
 
 const useLoginForm = (handleLogin) => {
   const [formHint, setFormHint] = useState('');
-  const [formState, setFormState] = useState({
+  const [credentials, setCredentials] = useState({
     username: '',
     password: '',
   });
 
   const navigate = useNavigate();
 
-  const handleEvent = async (event) => {
-    event.preventDefault();
+  const login = async (submitEvent) => {
+    submitEvent.preventDefault();
 
-    const { type, target } = event;
-    
-    if (type === 'submit') {
-      const data = await loginService.login(formState);
-      
-      if (data.error) {
-        setFormHint(data.error);
-      } else {
-        handleLogin(data);
-        navigate('/');
-      }
-    } else if (type === 'change') {
-      const { id, value } = target;
-      setFormState({ ...formState, [id]: value,});
+    try {
+      const bearerToken = await loginService.getBearerToken(credentials);
+      handleLogin(bearerToken);
+      navigate('/');
+    } catch (error) {
+      setFormHint(`${error.name}: ${error.message}`);
     }
+
+  };
+
+  const updateCredentials = async (changeEvent) => {
+    const { id, value } = changeEvent.target;
+    setCredentials({ ...credentials, [id]: value,});
   };
 
   return {
+    login,
     formHint,
-    formState,
-    handleEvent,
+    credentials,
+    updateCredentials,
   };
 };
 

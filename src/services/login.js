@@ -1,17 +1,15 @@
-import axios from "axios";
-import endpoints from "./endpoints";
+import api from './api';
+import endpoints from './endpoints';
 
-const api = axios.create({ baseURL: endpoints.baseUrl });
-
-const login = async (credentials) => {
+const getBearerToken = async (credentials) => {
   try {
-    const tokenResponse = await api.post(endpoints.login, credentials);
-    return tokenResponse.data;
-  } catch (errorPayload) {
-    return errorPayload.response.data;
+    const { data: bearerToken } = await api.post(endpoints.login, credentials);
+    return bearerToken;
+  } catch (error) {
+    console.log(error.response.data);
   }
 };
 
 export default {
-  login,
+  getBearerToken
 };

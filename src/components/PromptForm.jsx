@@ -8,15 +8,15 @@ const PromptForm = ({
   const {
     answer,
     wordCount,
-    handleChange,
-    handleSubmit,
+    updateAnswer,
+    submitAnswer,
   } = usePromptForm(user, prompt, triggerRefetch);
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className='journalEntry-form'>
+      <form onSubmit={submitAnswer} className='journalEntry-form'>
         <label>Write a response to the prompt, then reflect on the answer to extract powerful insights:
-          <textarea name='entry' value={answer} onChange={handleChange}>
+          <textarea name='entry' value={answer} onChange={updateAnswer}>
           </textarea>
         </label>
 

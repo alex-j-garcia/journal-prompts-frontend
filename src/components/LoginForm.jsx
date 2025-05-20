@@ -2,21 +2,22 @@ import useLoginForm from "../hooks/useLoginForm";
 
 const LoginForm = ({ handleLogin }) => {
   const {
+    login,
     formHint,
-    formState,
-    handleEvent,
+    credentials,
+    updateCredentials,
   } = useLoginForm(handleLogin);
 
   return (
-    <form onSubmit={handleEvent}>
+    <form onSubmit={login}>
       <span>{formHint}</span>
       <div>
         <label htmlFor='username'>username:</label>
         <input
           id='username'
           type='text'
-          onChange={handleEvent}
-          value={formState.username}
+          onChange={updateCredentials}
+          value={credentials.username}
         />
       </div>
       <div>
@@ -24,8 +25,8 @@ const LoginForm = ({ handleLogin }) => {
         <input
           id='password'
           type='password'
-          onChange={handleEvent}
-          value={formState.password}
+          onChange={updateCredentials}
+          value={credentials.password}
         />
       </div>
       <button type='submit'>Login</button>

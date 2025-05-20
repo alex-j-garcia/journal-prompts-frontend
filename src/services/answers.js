@@ -1,36 +1,26 @@
-import axios from 'axios';
+import api from './api';
+import createAuthHeaderFromUser from '../utils/createAuthHeaderFromUser';
 import endpoints from './endpoints';
 
-const api = axios.create({ baseURL: endpoints.baseUrl });
-
-const addAnswer = async (payload) => {
-  const { answer, promptId, user } = payload;
-  const customHeader = {};
-  
-  if (user && user.id) {
-    customHeader.user = user.id;
-  } else if (user && user.token) {
-    customHeader.authorization = `Bearer ${user.token}`;
-  }
+const addPromptAnswer = async (promptAnswer) => {
+  const { answer, promptId, user } = promptAnswer;
+  const requestBody = { answer, promptId };
+  const authenticationHeader = createAuthHeaderFromUser(user);
   
   try {
-    const promise = await api.post(
-      endpoints.answers,
-      { answer, promptId, },
-      { headers: customHeader },
-    );
-    return promise.data;
+    const { data: newAnswer } = await api.post(endpoints.answers, requestBody, authenticationHeader);
+    return newAnswer;
   } catch (error) {
-    console.log(`Backend communication error on answer POST: ${error}`);
+    console.log(error.response.data);
   }
 };
 
 const getPromptAnswers = async (promptId) => {
-  const promise = await api.get(`${endpoints.answers}?promptId=${promptId}`);
-  return promise.data;
+  const { data: promptAnswers } = await api.get(`${endpoints.answers}?promptId=${promptId}`);
+  return promptAnswers;
 };
 
 export default {
-  addAnswer,
+  addPromptAnswer,
   getPromptAnswers,
 }
