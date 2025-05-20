@@ -1,11 +1,11 @@
 import api from './api';
-import createAuthHeaderFromUser from '../utils/createAuthHeaderFromUser';
+import createAuthenticationHeaderFromUser from '../utils/createAuthenticationHeaderFromUser';
 import endpoints from './endpoints';
 
 const addPromptAnswer = async (promptAnswer) => {
   const { answer, promptId, user } = promptAnswer;
   const requestBody = { answer, promptId };
-  const authenticationHeader = createAuthHeaderFromUser(user);
+  const authenticationHeader = createAuthenticationHeaderFromUser(user);
   
   try {
     const { data: newAnswer } = await api.post(endpoints.answers, requestBody, authenticationHeader);

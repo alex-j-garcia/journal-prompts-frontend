@@ -1,4 +1,4 @@
-const createAuthHeaderFromUser = (user) => {
+const createAuthenticationHeaderFromUser = (user) => {
   const customHeaders = {};
 
   if (!user) {
@@ -13,4 +13,4 @@ const createAuthHeaderFromUser = (user) => {
   return customHeaders;
 };
 
-export default createAuthHeaderFromUser;
+export default createAuthenticationHeaderFromUser;

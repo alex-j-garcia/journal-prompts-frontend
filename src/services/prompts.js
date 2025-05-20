@@ -1,9 +1,9 @@
 import api from './api';
-import createAuthHeaderFromUser from '../utils/createAuthHeaderFromUser';
+import createAuthenticationHeaderFromUser from '../utils/createAuthenticationHeaderFromUser';
 import endpoints from './endpoints';
 
 const getActivePrompt = async (user) => {
-  const authenticationHeader = createAuthHeaderFromUser(user);
+  const authenticationHeader = createAuthenticationHeaderFromUser(user);
   
   try {
     const { data: activePrompt } = await api.get(endpoints.activePrompt, authenticationHeader);
