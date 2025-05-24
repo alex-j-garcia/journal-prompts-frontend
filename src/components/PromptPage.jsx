@@ -1,7 +1,7 @@
 import usePrompt from '../hooks/usePrompt';
-import Layout from './Layout';
-import PromptForm from "./PromptForm";
-import AnswersList from "./AnswersList";
+import Layout from '@modules/common/components/Layout';
+import PromptForm from './PromptForm';
+import AnswersList from '@modules/common/components/AnswersList';
 
 const PromptPage = ({ user, }) => {
   const {

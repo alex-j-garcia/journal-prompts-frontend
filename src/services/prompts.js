@@ -1,5 +1,5 @@
 import api from './api';
-import createAuthenticationHeaderFromUser from '../utils/createAuthenticationHeaderFromUser';
+import createAuthenticationHeaderFromUser from '@modules/common/utils/createAuthenticationHeaderFromUser';
 import endpoints from './endpoints';
 
 const getActivePrompt = async (user) => {

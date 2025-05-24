@@ -1,4 +1,4 @@
-import Layout from "./Layout";
+import Layout from '@modules/common/components/Layout';
 
 const GlobalFeedPage = ({ user }) => {
   return (
