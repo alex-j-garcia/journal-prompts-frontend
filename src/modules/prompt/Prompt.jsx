@@ -1,6 +1,6 @@
 import usePrompt from './usePrompt';
 import Layout from '@modules/common/components/Layout';
-import PromptForm from './components/PromptForm';
+import PromptForm from './PromptForm';
 import AnswersList from '@modules/common/components/AnswersList';
 
 const Prompt = ({ user, }) => {

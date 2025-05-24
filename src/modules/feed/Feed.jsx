@@ -1,6 +1,6 @@
 import Layout from '@modules/common/components/Layout';
 
-const GlobalFeed = ({ user }) => {
+const Feed = ({ user }) => {
   return (
     <Layout user={user}>
       <h2>Global Feed</h2>
@@ -8,4 +8,4 @@ const GlobalFeed = ({ user }) => {
   );
 };
 
-export default GlobalFeed;
+export default Feed;

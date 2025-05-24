@@ -1,8 +1,8 @@
 import { Route, Routes, } from 'react-router-dom';
 import useUser from '@hooks/useUser';
-import Prompt from './components/Prompt';
-import Login from './components/Login';
-import GlobalFeed from './components/GlobalFeed';
+import Prompt from '@modules/prompt';
+import Login from '@modules/login';
+import Feed from '@modules/feed';
 import './App.css'
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
         />
         <Route
           path='/global-feed'
-          element={<GlobalFeed user={user} />}
+          element={<Feed user={user} />}
         />
         <Route
           path='/'

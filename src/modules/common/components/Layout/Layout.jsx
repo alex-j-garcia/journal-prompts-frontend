@@ -1,12 +1,13 @@
 import Navigation from '@modules/common/components/Navigation';
+import Header from '../Header';
 
 const Layout = ({ user, children, }) => {
   return (
     <div>
-      <header>
+      <Header>
         <h1>📖 Journal Prompts</h1>
         <Navigation user={user} />
-      </header>
+      </Header>
       <main>
         {children}
       </main>
