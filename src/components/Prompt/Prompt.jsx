@@ -1,9 +1,9 @@
-import usePrompt from '../hooks/usePrompt';
+import usePrompt from './usePrompt';
 import Layout from '@modules/common/components/Layout';
-import PromptForm from './PromptForm';
+import PromptForm from './components/PromptForm';
 import AnswersList from '@modules/common/components/AnswersList';
 
-const PromptPage = ({ user, }) => {
+const Prompt = ({ user, }) => {
   const {
     prompt,
     isLoading,
@@ -34,4 +34,4 @@ const PromptPage = ({ user, }) => {
   );
 }
 
-export default PromptPage;
+export default Prompt;

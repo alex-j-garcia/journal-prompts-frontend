@@ -1,8 +1,8 @@
 import { Route, Routes, } from 'react-router-dom';
-import useUser from './hooks/useUser';
-import PromptPage from './components/PromptPage';
-import LoginPage from './components/LoginPage';
-import GlobalFeedPage from './components/GlobalFeedPage';
+import useUser from '@hooks/useUser';
+import Prompt from './components/Prompt';
+import Login from './components/Login';
+import GlobalFeed from './components/GlobalFeed';
 import './App.css'
 
 function App() {
@@ -13,15 +13,15 @@ function App() {
       <Routes>
         <Route
           path='/login'
-          element={<LoginPage handleLogin={setUser} />}
+          element={<Login handleLogin={setUser} />}
         />
         <Route
           path='/global-feed'
-          element={<GlobalFeedPage user={user} />}
+          element={<GlobalFeed user={user} />}
         />
         <Route
           path='/'
-          element={<PromptPage user={user} />}
+          element={<Prompt user={user} />}
         />
       </Routes>
     </div>

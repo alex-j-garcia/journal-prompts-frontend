@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import useWordCount from './useWordCount';
-import answersService from '../services/answers';
+import answersService from '@services/answers';
 
 const usePromptForm = (user, prompt, triggerRefetch) => {
   const [answer, setAnswer] = useState('');

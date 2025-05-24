@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import useLocalStorage from '../hooks/useLocalStorage';
-import promptsService from '../services/prompts';
-import answersService from '../services/answers';
+import useLocalStorage from './useLocalStorage';
+import promptsService from '@services/prompts';
+import answersService from '@services/answers';
 
 const usePrompt = (user) => {
   const [prompt, setPrompt] = useState({});

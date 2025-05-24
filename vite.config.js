@@ -15,7 +15,10 @@ export default defineConfig({
   },
   resolve: {
     alias: [
-      { find: '@modules', replacement: path.resolve(__dirname, 'src/modules') }
+      { find: '@modules', replacement: path.resolve(__dirname, 'src/modules') },
+      { find: '@services', replacement: path.resolve(__dirname, 'src/services') },
+      { find: '@hooks', replacement: path.resolve(__dirname, 'src/hooks') },
+      { find: '@utils', replacement: path.resolve(__dirname, 'src/utils') },
     ]
   }
 })

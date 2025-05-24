@@ -1,4 +1,4 @@
-import useLoginForm from "../hooks/useLoginForm";
+import useLoginForm from '../useLoginForm';
 
 const LoginForm = ({ handleLogin }) => {
   const {

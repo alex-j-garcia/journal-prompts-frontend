@@ -1,7 +1,7 @@
 import Layout from '@modules/common/components/Layout';
-import LoginForm from './LoginForm';
+import LoginForm from './components/LoginForm';
 
-const LoginPage = ({ handleLogin }) => {
+const Login = ({ handleLogin }) => {
   return (
     <Layout>
       <h2>Login</h2>
@@ -10,4 +10,4 @@ const LoginPage = ({ handleLogin }) => {
   );
 };
 
-export default LoginPage;
+export default Login;
