@@ -1,8 +1,8 @@
 import axios from 'axios';
-import endpoints from './endpoints';
+import { ENDPOINTS } from '@modules/common/api/constants';
 
 const api = axios.create({
-  baseURL: endpoints.baseUrl
+  baseURL: ENDPOINTS.baseUrl
 });
 
 export default api;

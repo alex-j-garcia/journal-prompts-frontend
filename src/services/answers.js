@@ -1,6 +1,6 @@
-import api from './api';
+import api from '@services/api';
 import createAuthenticationHeaderFromUser from '@modules/common/utils/createAuthenticationHeaderFromUser';
-import endpoints from './endpoints';
+import { ENDPOINTS } from '@modules/common/api/constants';
 
 const addPromptAnswer = async (promptAnswer) => {
   const { answer, promptId, user } = promptAnswer;
@@ -8,7 +8,7 @@ const addPromptAnswer = async (promptAnswer) => {
   const authenticationHeader = createAuthenticationHeaderFromUser(user);
   
   try {
-    const { data: newAnswer } = await api.post(endpoints.answers, requestBody, authenticationHeader);
+    const { data: newAnswer } = await api.post(ENDPOINTS.answers.all, requestBody, authenticationHeader);
     return newAnswer;
   } catch (error) {
     console.log(error.response.data);
@@ -16,7 +16,7 @@ const addPromptAnswer = async (promptAnswer) => {
 };
 
 const getPromptAnswers = async (promptId) => {
-  const { data: promptAnswers } = await api.get(`${endpoints.answers}?promptId=${promptId}`);
+  const { data: promptAnswers } = await api.get(ENDPOINTS.answers.find(promptId));
   return promptAnswers;
 };
 

@@ -3,6 +3,7 @@ import useUser from '@hooks/useUser';
 import Prompt from '@modules/prompt';
 import Login from '@modules/login';
 import Feed from '@modules/feed';
+import { LINKS } from '@modules/common/api/constants'
 import './App.css'
 
 function App() {
@@ -12,15 +13,15 @@ function App() {
     <div className='app'>
       <Routes>
         <Route
-          path='/login'
+          path={LINKS.login}
           element={<Login handleLogin={setUser} />}
         />
         <Route
-          path='/global-feed'
+          path={LINKS.feed}
           element={<Feed user={user} />}
         />
         <Route
-          path='/'
+          path={LINKS.home}
           element={<Prompt user={user} />}
         />
       </Routes>
