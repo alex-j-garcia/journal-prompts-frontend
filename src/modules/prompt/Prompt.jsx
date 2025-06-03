@@ -7,7 +7,6 @@ const Prompt = ({ user, }) => {
   const {
     prompt,
     isLoading,
-    isError,
     triggerRefetch,
   } = usePrompt(user);
 

@@ -5,7 +5,6 @@ import answersService from '@services/answers';
 
 const usePrompt = (user) => {
   const [prompt, setPrompt] = useState({});
-  const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isRefetch, setIsRefetch] = useState(false);
   const [localEntries, setLocalEntries] = useLocalStorage();
@@ -35,7 +34,6 @@ const usePrompt = (user) => {
         
         setPrompt({ ...currentPromptUpdate });
 
-
         setLocalEntries({
           ...localEntries,
           [prompt.id]: currentPromptUpdate,
@@ -47,7 +45,6 @@ const usePrompt = (user) => {
       }
     } catch (exception) {
       console.log(`Error fetching prompt: ${exception.name}: ${exception.message}`);
-      setIsError(true);
     } finally {
       setIsLoading(false);
     }
@@ -90,7 +87,6 @@ const usePrompt = (user) => {
 
   return { 
     prompt,
-    isError,
     isLoading,
     triggerRefetch,
   };
