@@ -1,5 +1,5 @@
 import Layout from '@modules/common/components/Layout';
-import LoginForm from './LoginForm';
+import LoginForm from '@modules/login/LoginForm';
 
 const Login = ({ handleLogin }) => {
   return (

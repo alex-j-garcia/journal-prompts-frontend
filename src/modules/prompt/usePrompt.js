@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import useLocalStorage from './useLocalStorage';
+import useLocalStorage from '@modules/prompt/useLocalStorage';
 import promptsService from '@services/prompts';
 import answersService from '@services/answers';
 

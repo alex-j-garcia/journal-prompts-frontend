@@ -1,3 +1,3 @@
-import Navigation from "./Navigation";
+import Navigation from '@modules/common/components/Navigation/Navigation';
 
 export default Navigation;

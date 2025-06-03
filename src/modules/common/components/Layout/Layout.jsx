@@ -1,5 +1,5 @@
 import Navigation from '@modules/common/components/Navigation';
-import Header from '../Header';
+import Header from '@modules/common/components/Header';
 
 const Layout = ({ user, children, }) => {
   return (

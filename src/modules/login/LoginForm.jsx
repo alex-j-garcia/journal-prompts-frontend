@@ -1,4 +1,4 @@
-import useLoginForm from './useLoginForm';
+import useLoginForm from '@modules/login/useLoginForm';
 
 const LoginForm = ({ handleLogin }) => {
   const {

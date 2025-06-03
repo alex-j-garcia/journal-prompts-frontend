@@ -1,3 +1,3 @@
-import Header from "./Header";
+import Header from '@modules/common/components/Header/Header';
 
 export default Header;

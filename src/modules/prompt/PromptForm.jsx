@@ -1,4 +1,4 @@
-import usePromptForm from './usePromptForm';
+import usePromptForm from '@modules/prompt/usePromptForm';
 
 const PromptForm = ({
   user,
